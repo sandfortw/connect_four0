@@ -13,7 +13,6 @@ RSpec.describe Cell do
   it "has readable attributes" do
    cell = Cell.new(0, 0)
 
-
     expect(cell.row).to eq(0)
     expect(cell.column).to eq(0)
     expect(cell.piece).to eq(nil)
@@ -35,9 +34,21 @@ RSpec.describe Cell do
     cell = Cell.new(0,0) 
     piece = Piece.new(:user)
     cell.place_piece(piece)
-
-    expect(cell.piece).to eq(piece)
+    
     expect(cell.empty?).to eq(false)
   end 
 
+  it 'will render the cell' do 
+    cell = Cell.new(0,0) 
+    cell1 = Cell.new(1, 1)
+    cell2 = Cell.new(2, 2)
+    piece = Piece.new(:user)
+    piece2 = Piece.new(:computer)
+    cell.place_piece(piece)
+    cell1.place_piece(piece2)
+
+    expect(cell.render).to eq('X')
+    expect(cell1.render).to eq('O')
+    expect(cell2.render).to eq('.')
+  end 
 end
