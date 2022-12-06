@@ -11,7 +11,7 @@ RSpec.describe Cell do
   end
 
   it "has readable attributes" do
-   cell = cell.new(0, 0)
+   cell = Cell.new(0, 0)
 
 
     expect(cell.row).to eq(0)
@@ -26,9 +26,9 @@ RSpec.describe Cell do
   end
 
   it "will check to see if cell is empty" do
-    piece = Piece.new(0, 0)
+    cell = Cell.new(0, 0)
 
-    expect(piece.empty?).to eq(true)
+    expect(cell.empty?).to eq(true)
   end
 
 
