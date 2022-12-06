@@ -1,17 +1,21 @@
 class Cell
-  attr_reader :row, :column, :health
+  attr_reader :row, :column, :piece
 
   def initialize(row, column)
     @row = row
     @column = column
-    @health = 1
+    @piece = nil
   end 
 
   def empty?
-    if @health = 1
+    if @piece == nil
       true
     else 
       false
     end 
+  end 
+
+  def place_piece(piece)
+    @piece = piece
   end 
 end 

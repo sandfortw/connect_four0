@@ -16,13 +16,13 @@ RSpec.describe Cell do
 
     expect(cell.row).to eq(0)
     expect(cell.column).to eq(0)
-    expect(cell.health).to eq(1)
+    expect(cell.piece).to eq(nil)
 
     cell1 = Cell.new(1, 1)
 
     expect(cell1.row).to eq(1)
     expect(cell1.column).to eq(1)
-    expect(cell1.health).to eq(1)
+    expect(cell1.piece).to eq(nil)
   end
 
   it "will check to see if cell is empty" do
@@ -33,14 +33,11 @@ RSpec.describe Cell do
 
   it "will place a piece on the cell for user" do 
     cell = Cell.new(0,0) 
-    piece = Piece.new
-    cell.place_piece(piece.user)
+    piece = Piece.new(:user)
+    cell.place_piece(piece)
 
-    expect(cell.health).to eq(0)
+    expect(cell.piece).to eq(piece)
     expect(cell.empty?).to eq(false)
   end 
-  
-
-
 
 end
