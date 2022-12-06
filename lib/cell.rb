@@ -19,5 +19,11 @@ class Cell
     @piece = piece
   end 
 
-  
+  def render
+    if @piece == nil 
+      '.'
+    else 
+      @piece.symbol
+    end 
+  end 
 end 
