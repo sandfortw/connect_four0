@@ -1,8 +1,11 @@
 class Piece
-  attr_reader :user, :computer
+  attr_reader :symbol
   
-  def initialize
-    @user = 'X'
-    @computer = 'O'
+  def initialize(player_type)
+   if player_type == :user
+    @symbol = 'X'
+   else player_type == :computer
+    @symbol = 'O'
+   end 
   end 
 end 
