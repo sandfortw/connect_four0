@@ -6,4 +6,12 @@ class Cell
     @column = column
     @health = 1
   end 
+
+  def empty?
+    if @health = 1
+      true
+    else 
+      false
+    end 
+  end 
 end 
