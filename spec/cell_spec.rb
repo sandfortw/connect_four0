@@ -31,7 +31,14 @@ RSpec.describe Cell do
     expect(cell.empty?).to eq(true)
   end
 
+  it "will place a piece on the cell for user" do 
+    cell = Cell.new(0,0) 
+    piece = Piece.new
+    cell.place_piece(piece.user)
 
+    expect(cell.health).to eq(0)
+    expect(cell.empty?).to eq(false)
+  end 
   
 
 
