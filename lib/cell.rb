@@ -1,7 +1,7 @@
 class Cell
   attr_reader :row, :column, :piece
 
-  def initialize(row, column)
+  def initialize(column, row)
     @row = row
     @column = column
     @piece = nil

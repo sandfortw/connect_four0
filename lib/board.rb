@@ -85,4 +85,22 @@ class Board
   @matrix.row(num).to_a
  end
 
+#  def count_nils(column_num)
+  # @matrix.column(column_num).to_a.each do |cell|
+#     cell.
+#   end
+
+ def last_empty_cell_row(column_num)
+  binding.pry
+  @matrix.column(column_num).to_a.reverse.find do |cell|
+    binding.pry
+    if cell.empty?
+      return cell.row
+      break
+    end
+  end
+
+
+
+ end
 end
