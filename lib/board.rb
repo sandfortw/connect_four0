@@ -60,7 +60,17 @@ class Board
   end
  
  def render
-  @matrix
+  print @matrix.row(0).to_a.map {|cell| cell.render}.join 
+  print "\n"
+  print @matrix.row(1).to_a.map {|cell| cell.render}.join
+  print "\n"
+  print @matrix.row(2).to_a.map {|cell| cell.render}.join
+  print "\n"
+  print @matrix.row(3).to_a.map {|cell| cell.render}.join
+  print "\n"
+  print @matrix.row(4).to_a.map {|cell| cell.render}.join
+  print "\n"
+  print @matrix.row(5).to_a.map {|cell| cell.render}.join
  end
   
 
