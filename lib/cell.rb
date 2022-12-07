@@ -8,11 +8,7 @@ class Cell
   end 
 
   def empty?
-    if @piece == nil
-      true
-    else 
-      false
-    end 
+    @piece == nil
   end 
 
   def place_piece(piece)
