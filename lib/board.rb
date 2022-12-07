@@ -61,19 +61,13 @@ class Board
   end
  
  def render
-  print "ABCDEFG"
-  print "\n"
-  print @matrix.row(0).to_a.map {|cell| cell.render}.join 
-  print "\n"
-  print @matrix.row(1).to_a.map {|cell| cell.render}.join
-  print "\n"
-  print @matrix.row(2).to_a.map {|cell| cell.render}.join
-  print "\n"
-  print @matrix.row(3).to_a.map {|cell| cell.render}.join
-  print "\n"
-  print @matrix.row(4).to_a.map {|cell| cell.render}.join
-  print "\n"
-  print @matrix.row(5).to_a.map {|cell| cell.render}.join
+  puts "ABCDEFG"
+  puts @matrix.row(0).to_a.map {|cell| cell.render}.join 
+  puts @matrix.row(1).to_a.map {|cell| cell.render}.join
+  puts @matrix.row(2).to_a.map {|cell| cell.render}.join
+  puts @matrix.row(3).to_a.map {|cell| cell.render}.join
+  puts @matrix.row(4).to_a.map {|cell| cell.render}.join
+  puts @matrix.row(5).to_a.map {|cell| cell.render}.join
   return "Print successful."
  end
   
@@ -85,22 +79,24 @@ class Board
   @matrix.row(num).to_a
  end
 
-#  def count_nils(column_num)
-  # @matrix.column(column_num).to_a.each do |cell|
-#     cell.
-#   end
-
  def user_place_piece(column_num)
-  # binding.pry
   @matrix.column(column_num).to_a.reverse.find do |cell|
-    # binding.pry
     if cell.empty?
-      return cell.place_piece(Piece.new(:user))
+     return cell.place_piece(Piece.new(:user))
       break
+     end
     end
   end
 
+  def computer_place_piece
+    possible_placements = [0, 1 , 2 ,3 ,4 ,5, 6]
+    @matrix.column(possible_placements.shuffle.first).to_a.reverse.find do |cell|
+      if cell.empty?
+        return cell.place_piece(Piece.new(:computer))
+        break
+      end
+    end 
+  end 
 
 
- end
 end

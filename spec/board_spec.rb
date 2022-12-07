@@ -45,8 +45,19 @@ RSpec.describe Board do
   expect(board.board["cell35"].piece.symbol).to eq('X')
   board.user_place_piece(0)
   expect(board.board["cell28"].piece.symbol).to eq('X')
-  binding.pry
+
 
   end
 
+  it "computer can place piece" do 
+
+    board = Board.new
+    board.computer_place_piece
+
+   board.render
+
+    board.computer_place_piece
+    board.render
+
+  end 
 end
