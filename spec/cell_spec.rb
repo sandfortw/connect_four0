@@ -51,4 +51,26 @@ RSpec.describe Cell do
     expect(cell1.render).to eq('O')
     expect(cell2.render).to eq('.')
   end 
+
+  it 'will access and manipulate cells in a hash' do
+
+    board = { 
+      cell0: Cell.new(0,0), 
+      cell1: Cell.new(1, 2),
+      cell2: Cell.new(2, 2)
+    }
+   
+
+
+    piece = Piece.new(:user)
+    piece2 = Piece.new(:computer)
+    board[:cell0].place_piece(piece)
+    board[:cell1].place_piece(piece2)
+
+    expect(board[:cell0].render).to eq('X')
+    expect(board[:cell1].render).to eq('O')
+    expect(board[:cell2].render).to eq('.')
+    expect(board[:cell1].row).to eq(1)
+    expect(board[:cell1].column).to eq(2)
+  end
 end
