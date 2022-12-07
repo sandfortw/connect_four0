@@ -35,4 +35,10 @@ RSpec.describe Board do
     expect(board.render).to eq("Print successful.")
 
   end
+
+  it "can find empty cell row number" do
+    board = Board.new
+    expect(board.last_empty_cell_row(0)).to eq(5)
+
+  end
 end
