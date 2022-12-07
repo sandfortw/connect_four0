@@ -37,15 +37,16 @@ RSpec.describe Board do
   end
 
  
-  it "user can place piece" do
+  it "user can place piece using a letter" do
 
   board = Board.new
-  board.user_place_piece(0)
+  board.user_place_piece("a")
 
   expect(board.board["cell35"].piece.symbol).to eq('X')
-  board.user_place_piece(0)
+  board.user_place_piece("A")
   expect(board.board["cell28"].piece.symbol).to eq('X')
 
+  
 
   end
 
@@ -60,4 +61,5 @@ RSpec.describe Board do
     board.render
 
   end 
+
 end

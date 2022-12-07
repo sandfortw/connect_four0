@@ -79,8 +79,9 @@ class Board
   @matrix.row(num).to_a
  end
 
- def user_place_piece(column_num)
-  @matrix.column(column_num).to_a.reverse.find do |cell|
+ def user_place_piece(letter)
+  column_num_to_letter = { "A" => 0, "B" => 1, "C" => 2, "D" => 3, "E" => 4, "F" => 5, "G" => 6}
+  @matrix.column(column_num_to_letter[letter.upcase]).to_a.reverse.find do |cell|
     if cell.empty?
      return cell.place_piece(Piece.new(:user))
       break
