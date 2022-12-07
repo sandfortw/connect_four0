@@ -3,6 +3,7 @@ require 'pry'
 
 
 class Board
+  attr_reader :board, :matrix
 
   def initialize
    @board = {
@@ -60,6 +61,8 @@ class Board
   end
  
  def render
+  print "ABCDEFG"
+  print "\n"
   print @matrix.row(0).to_a.map {|cell| cell.render}.join 
   print "\n"
   print @matrix.row(1).to_a.map {|cell| cell.render}.join
