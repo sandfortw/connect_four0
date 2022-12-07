@@ -74,7 +74,15 @@ class Board
   print @matrix.row(4).to_a.map {|cell| cell.render}.join
   print "\n"
   print @matrix.row(5).to_a.map {|cell| cell.render}.join
+  return "Print successful."
  end
   
+ def column(num)
+  @matrix.column(num).to_a
+ end
+
+ def row(num)
+  @matrix.row(num).to_a
+ end
 
 end
