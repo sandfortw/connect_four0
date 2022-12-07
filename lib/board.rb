@@ -90,12 +90,12 @@ class Board
 #     cell.
 #   end
 
- def last_empty_cell_row(column_num)
-  binding.pry
+ def user_place_piece(column_num)
+  # binding.pry
   @matrix.column(column_num).to_a.reverse.find do |cell|
-    binding.pry
+    # binding.pry
     if cell.empty?
-      return cell.row
+      return cell.place_piece(Piece.new(:user))
       break
     end
   end

@@ -36,9 +36,17 @@ RSpec.describe Board do
 
   end
 
-  it "can find empty cell row number" do
-    board = Board.new
-    expect(board.last_empty_cell_row(0)).to eq(5)
+ 
+  it "user can place piece" do
+
+  board = Board.new
+  board.user_place_piece(0)
+
+  expect(board.board["cell35"].piece.symbol).to eq('X')
+  board.user_place_piece(0)
+  expect(board.board["cell28"].piece.symbol).to eq('X')
+  binding.pry
 
   end
+
 end
