@@ -89,10 +89,10 @@ RSpec.describe Board do
 
   end
 
-  it 'will check for a diagonal win for user' do
+  it 'will check for a downward diagonal win for user' do
     board = Board.new
 
-    # expect(board.diagonal_user_win?).to be(fa
+    expect(board.diagonal_user_win?(0)).to be(false)
     board.user_place_piece("A")
     board.user_place_piece("A")
     board.user_place_piece("A")
@@ -112,5 +112,21 @@ RSpec.describe Board do
     board.user_place_piece("D")
     board.user_place_piece("D")
     expect(board.diagonal_user_win?(0)).to be(true)
+  end
+
+  it 'will check for an upwards diagonal win for user' do
+    board = Board.new
+    board.user_place_piece("A")
+    board.user_place_piece("B")
+    board.user_place_piece("B")
+    board.user_place_piece("C")
+    board.user_place_piece("C")
+    board.user_place_piece("C")
+    board.user_place_piece("D")
+    board.user_place_piece("D")
+    board.user_place_piece("D")
+    board.user_place_piece("D")
+    expect(board.diagonal_user_win?(5)).to be(true)
+
   end
 end

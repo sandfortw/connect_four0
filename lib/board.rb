@@ -166,10 +166,9 @@ class Board
   end
 
   def diagonal_user_win?(row_num)
-    # row0[0],row1[1], row2[2],row3[3] #==>win downwards
+    # row0[0],row1[1], row2[2],row3[3] #==> win downwards
     # row5[0], row4[1], row3[2], row2[1] #==> win upwards
     
-    # binding.pry
     row_hash = {
     "row0" => @matrix.row(0).to_a.map {|cell| cell.render},
     "row1" => @matrix.row(1).to_a.map {|cell| cell.render},
@@ -180,21 +179,106 @@ class Board
     }
 
     column_counter = -1
-    # binding.pry
     row_hash["row#{row_num}"].each do |character|
       column_counter += 1
-      # binding.pry
       if character == 'X'
-        # binding.pry
-        if row_hash["row#{row_num + 1}"][column_counter + 1] == 'X'
-          if row_hash["row#{row_num + 2}"][column_counter + 2] == 'X'
-            if row_hash["row#{row_num + 3}"][column_counter + 3] == 'X'
-              return true
+        if row_hash["row#{row_num + 1}"] != nil
+          if row_hash["row#{row_num + 1}"][column_counter + 1] == 'X'
+            if row_hash["row#{row_num + 2}"] != nil
+              if row_hash["row#{row_num + 2}"][column_counter + 2] == 'X'
+                if row_hash["row#{row_num + 3}"] != nil
+                  if row_hash["row#{row_num + 3}"][column_counter + 3] == 'X'
+                    return true
+                    break
+                  end
+                end
+              end
             end
           end
         end
       end
     end
+
+    column_counter = -1
+    row_hash["row#{row_num}"].each do |character|
+      column_counter += 1
+      if character == 'X'
+        if row_hash["row#{row_num - 1}"] != nil
+          if row_hash["row#{row_num - 1}"][column_counter + 1] == 'X'
+            if row_hash["row#{row_num - 2}"] != nil
+              if row_hash["row#{row_num - 2}"][column_counter + 2] == 'X'
+                if row_hash["row#{row_num - 3}"] != nil
+                  if row_hash["row#{row_num - 3}"][column_counter + 3] == 'X'
+                    return true
+                    break
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+
+    return false
+  end
+
+  def diagonal_computer_win?(row_num)
+    # row0[0],row1[1], row2[2],row3[3] #==> win downwards
+    # row5[0], row4[1], row3[2], row2[1] #==> win upwards
+    
+    row_hash = {
+    "row0" => @matrix.row(0).to_a.map {|cell| cell.render},
+    "row1" => @matrix.row(1).to_a.map {|cell| cell.render},
+    "row2" => @matrix.row(2).to_a.map {|cell| cell.render},
+    "row3" => @matrix.row(3).to_a.map {|cell| cell.render},
+    "row4" => @matrix.row(4).to_a.map {|cell| cell.render},
+    "row5" => @matrix.row(5).to_a.map {|cell| cell.render}
+    }
+
+    column_counter = -1
+    row_hash["row#{row_num}"].each do |character|
+      column_counter += 1
+      if character == 'X'
+        if row_hash["row#{row_num + 1}"] != nil
+          if row_hash["row#{row_num + 1}"][column_counter + 1] == '0'
+            if row_hash["row#{row_num + 2}"] != nil
+              if row_hash["row#{row_num + 2}"][column_counter + 2] == '0'
+                if row_hash["row#{row_num + 3}"] != nil
+                  if row_hash["row#{row_num + 3}"][column_counter + 3] == '0'
+                    return true
+                    break
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+
+    column_counter = -1
+    row_hash["row#{row_num}"].each do |character|
+      column_counter += 1
+      if character == 'X'
+        if row_hash["row#{row_num - 1}"] != nil
+          if row_hash["row#{row_num - 1}"][column_counter + 1] == '0'
+            if row_hash["row#{row_num - 2}"] != nil
+              if row_hash["row#{row_num - 2}"][column_counter + 2] == '0'
+                if row_hash["row#{row_num - 3}"] != nil
+                  if row_hash["row#{row_num - 3}"][column_counter + 3] == '0'
+                    return true
+                    break
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+
+    return false
   end
 
 
