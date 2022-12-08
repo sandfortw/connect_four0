@@ -100,35 +100,69 @@ class Board
   end 
 
   def horizontal_user_win?
-    # row0 = []
-    # row1 = []
-    # row2 = []
-    # row3 = []
-    # row4 = []
-    # row5 = []
-    # row6 = []
-
-    # @matrix.row(0).to_a.each {|cell| row0 << cell.piece.symbol}
-    # @matrix.row(1).to_a.each {|cell| row0 << cell.piece.symbol}
-    # @matrix.row(2).to_a.each {|cell| row0 << cell.piece.symbol}
-    # @matrix.row(3).to_a.each {|cell| row0 << cell.piece.symbol}
-    # @matrix.row(4).to_a.each {|cell| row0 << cell.piece.symbol}
-    # @matrix.row(5).to_a.each {|cell| row0 << cell.piece.symbol}
-    # @matrix.row(6).to_a.each {|cell| row0 << cell.piece.symbol}
     check_wins = [
     [@matrix.row(0).to_a.map {|cell| cell.render}.join.scan(/XXXX/)],
     [@matrix.row(1).to_a.map {|cell| cell.render}.join.scan(/XXXX/)],
     [@matrix.row(2).to_a.map {|cell| cell.render}.join.scan(/XXXX/)],
     [@matrix.row(3).to_a.map {|cell| cell.render}.join.scan(/XXXX/)],
     [@matrix.row(4).to_a.map {|cell| cell.render}.join.scan(/XXXX/)],
-    [@matrix.row(5).to_a.map {|cell| cell.render}.join.scan(/XXXX/)]]
+    [@matrix.row(5).to_a.map {|cell| cell.render}.join.scan(/XXXX/)],
+    [@matrix.row(6).to_a.map {|cell| cell.render}.join.scan(/XXXX/)]]
+    
+    if check_wins != ([[[]], [[]], [[]], [[]], [[]], [[]], [[]]])
+      true
+    else 
+      false
+    end 
+  end
+
+  def vertical_user_win?
+    check_wins = [
+    [@matrix.column(0).to_a.map {|cell| cell.render}.join.scan(/XXXX/)],
+    [@matrix.column(1).to_a.map {|cell| cell.render}.join.scan(/XXXX/)],
+    [@matrix.column(2).to_a.map {|cell| cell.render}.join.scan(/XXXX/)],
+    [@matrix.column(3).to_a.map {|cell| cell.render}.join.scan(/XXXX/)],
+    [@matrix.column(4).to_a.map {|cell| cell.render}.join.scan(/XXXX/)],
+    [@matrix.column(5).to_a.map {|cell| cell.render}.join.scan(/XXXX/)]]
     
     if check_wins != ([[[]], [[]], [[]], [[]], [[]], [[]]])
       true
     else 
       false
     end 
+  end
 
+  def horizontal_computer_win?
+    check_wins = [
+    [@matrix.row(0).to_a.map {|cell| cell.render}.join.scan(/OOOO/)],
+    [@matrix.row(1).to_a.map {|cell| cell.render}.join.scan(/OOOO/)],
+    [@matrix.row(2).to_a.map {|cell| cell.render}.join.scan(/OOOO/)],
+    [@matrix.row(3).to_a.map {|cell| cell.render}.join.scan(/OOOO/)],
+    [@matrix.row(4).to_a.map {|cell| cell.render}.join.scan(/OOOO/)],
+    [@matrix.row(5).to_a.map {|cell| cell.render}.join.scan(/OOOO/)],
+    [@matrix.row(6).to_a.map {|cell| cell.render}.join.scan(/OOOO/)]]
+    
+    if check_wins != ([[[]], [[]], [[]], [[]], [[]], [[]], [[]]])
+      true
+    else 
+      false
+    end 
+  end
+
+  def vertical_computer_win?
+    check_wins = [
+    [@matrix.column(0).to_a.map {|cell| cell.render}.join.scan(/OOOO/)],
+    [@matrix.column(1).to_a.map {|cell| cell.render}.join.scan(/OOOO/)],
+    [@matrix.column(2).to_a.map {|cell| cell.render}.join.scan(/OOOO/)],
+    [@matrix.column(3).to_a.map {|cell| cell.render}.join.scan(/OOOO/)],
+    [@matrix.column(4).to_a.map {|cell| cell.render}.join.scan(/OOOO/)],
+    [@matrix.column(5).to_a.map {|cell| cell.render}.join.scan(/OOOO/)]]
+    
+    if check_wins != ([[[]], [[]], [[]], [[]], [[]], [[]]])
+      true
+    else 
+      false
+    end 
   end
 
 end
