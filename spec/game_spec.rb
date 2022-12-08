@@ -3,7 +3,7 @@ require './lib/cell'
 require './lib/board'
 require './lib/game'
 
-Rspec.describe Game do 
+RSpec.describe Game do 
   describe "#initialize" do 
     it 'will exist' do 
       game = Game.new
