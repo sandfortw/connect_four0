@@ -241,11 +241,11 @@ class Board
       column_counter += 1
       if character == 'X'
         if row_hash["row#{row_num + 1}"] != nil
-          if row_hash["row#{row_num + 1}"][column_counter + 1] == '0'
+          if row_hash["row#{row_num + 1}"][column_counter + 1] == 'O'
             if row_hash["row#{row_num + 2}"] != nil
-              if row_hash["row#{row_num + 2}"][column_counter + 2] == '0'
+              if row_hash["row#{row_num + 2}"][column_counter + 2] == 'O'
                 if row_hash["row#{row_num + 3}"] != nil
-                  if row_hash["row#{row_num + 3}"][column_counter + 3] == '0'
+                  if row_hash["row#{row_num + 3}"][column_counter + 3] == 'O'
                     return true
                     break
                   end
@@ -262,11 +262,11 @@ class Board
       column_counter += 1
       if character == 'X'
         if row_hash["row#{row_num - 1}"] != nil
-          if row_hash["row#{row_num - 1}"][column_counter + 1] == '0'
+          if row_hash["row#{row_num - 1}"][column_counter + 1] == 'O'
             if row_hash["row#{row_num - 2}"] != nil
-              if row_hash["row#{row_num - 2}"][column_counter + 2] == '0'
+              if row_hash["row#{row_num - 2}"][column_counter + 2] == 'O'
                 if row_hash["row#{row_num - 3}"] != nil
-                  if row_hash["row#{row_num - 3}"][column_counter + 3] == '0'
+                  if row_hash["row#{row_num - 3}"][column_counter + 3] == 'O'
                     return true
                     break
                   end
