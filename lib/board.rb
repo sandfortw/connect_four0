@@ -283,11 +283,11 @@ class Board
 
 
   def user_win?
-
+    diagonal_user_win? || horizontal_user_win? || vertical_user_win?
   end
 
   def computer_win?
-
+    diagonal_computer_win? || horizontal_computer_win? || vertical_computer_win?
   end
 
 end
