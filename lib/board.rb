@@ -166,6 +166,8 @@ class Board
   end
 
   def diagonal_user_win?
+    # row0[0],row1[1], row2[2],row3[3] #==>win downwards
+    # row5[0], row4[1], row3[2], row2[1] #==> win upwards
     row0 = @matrix.row(0).to_a.map {|cell| cell.render}
     row1 = @matrix.row(1).to_a.map {|cell| cell.render}
     row2 = @matrix.row(2).to_a.map {|cell| cell.render}
@@ -173,10 +175,7 @@ class Board
     row4 = @matrix.row(4).to_a.map {|cell| cell.render}
     row5 = @matrix.row(5).to_a.map {|cell| cell.render}
 
-    # row0[0],row1[1], row2[2],row3[3] #==>win downwards
-    # row5[0], row4[1], row3[2], row2[1] #==> win upwards
     column_counter = -1
-    # binding.pry
     row0.each do |character|
       column_counter += 1
       binding.pry
@@ -190,77 +189,6 @@ class Board
         end
       end
     end
-    column_counter = -1
-    row1.each do |character|
-      column_counter += 1
-      binding.pry
-      if character == 'X'
-        if row1[column_counter + 1] == 'X'
-          if row2[column_counter + 2] == 'X'
-            if row3[column_counter + 3] == 'X'
-              return true
-            end
-          end
-        end
-      end
-    end
-    column_counter = -1
-    row2.each do |character|
-      column_counter += 1
-      binding.pry
-      if character == 'X'
-        if row1[column_counter + 1] == 'X'
-          if row2[column_counter + 2] == 'X'
-            if row3[column_counter + 3] == 'X'
-              return true
-            end
-          end
-        end
-      end
-    end
-    column_counter = -1
-    row3.each do |character|
-      column_counter += 1
-      binding.pry
-      if character == 'X'
-        if row1[column_counter + 1] == 'X'
-          if row2[column_counter + 2] == 'X'
-            if row3[column_counter + 3] == 'X'
-              return true
-            end
-          end
-        end
-      end
-    end
-    column_counter = -1
-    row4.each do |character|
-      column_counter += 1
-      binding.pry
-      if character == 'X'
-        if row1[column_counter + 1] == 'X'
-          if row2[column_counter + 2] == 'X'
-            if row3[column_counter + 3] == 'X'
-              return true
-            end
-          end
-        end
-      end
-    end
-    column_counter = -1
-    row5.each do |character|
-      column_counter += 1
-      binding.pry
-      if character == 'X'
-        if row1[column_counter + 1] == 'X'
-          if row2[column_counter + 2] == 'X'
-            if row3[column_counter + 3] == 'X'
-              return true
-            end
-          end
-        end
-      end
-    end
-
 
   
   end
