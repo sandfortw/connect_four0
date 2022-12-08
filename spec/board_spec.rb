@@ -111,6 +111,6 @@ RSpec.describe Board do
     board.user_place_piece("D")
     board.user_place_piece("D")
     board.user_place_piece("D")
-    expect(board.diagonal_user_win?).to be(true)
+    expect(board.diagonal_user_win?(0)).to be(true)
   end
 end
