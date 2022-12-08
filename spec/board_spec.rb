@@ -37,16 +37,41 @@ RSpec.describe Board do
   end
 
  
-  it "user can place piece" do
+  it "user can place piece using a letter" do
 
   board = Board.new
-  board.user_place_piece(0)
+  board.user_place_piece("a")
 
   expect(board.board["cell35"].piece.symbol).to eq('X')
-  board.user_place_piece(0)
+  board.user_place_piece("A")
   expect(board.board["cell28"].piece.symbol).to eq('X')
-  binding.pry
+
+  
 
   end
 
+  it "computer can place piece" do 
+
+    board = Board.new
+    board.computer_place_piece
+
+   board.render
+
+    board.computer_place_piece
+    board.render
+
+  end 
+
+  it 'will check for a horizontal win for user' do 
+
+    board = Board.new
+    expect(board.horizontal_user_win?).to be(false)
+
+    board.user_place_piece("A")
+    board.user_place_piece("B")
+    board.user_place_piece("C")
+    board.user_place_piece("D")
+
+    expect(board.horizontal_user_win?).to be(true)
+  end 
 end
