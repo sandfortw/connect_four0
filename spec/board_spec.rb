@@ -74,4 +74,20 @@ RSpec.describe Board do
 
     expect(board.horizontal_user_win?).to be(true)
   end 
+
+  it 'will check for a vertical win for user' do 
+
+    board = Board.new
+    expect(board.vertical_user_win?).to be(false)
+
+    board.user_place_piece("A")
+    board.user_place_piece("A")
+    board.user_place_piece("A")
+    board.user_place_piece("A")
+
+    expect(board.vertical_user_win?).to be(true)
+
+  end
+
+
 end
