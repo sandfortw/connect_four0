@@ -165,4 +165,39 @@ class Board
     end 
   end
 
+  def diagonal_user_win?
+    # row0[0],row1[1], row2[2],row3[3] #==>win downwards
+    # row5[0], row4[1], row3[2], row2[1] #==> win upwards
+    row0 = @matrix.row(0).to_a.map {|cell| cell.render}
+    row1 = @matrix.row(1).to_a.map {|cell| cell.render}
+    row2 = @matrix.row(2).to_a.map {|cell| cell.render}
+    row3 = @matrix.row(3).to_a.map {|cell| cell.render}
+    row4 = @matrix.row(4).to_a.map {|cell| cell.render}
+    row5 = @matrix.row(5).to_a.map {|cell| cell.render}
+
+    column_counter = -1
+    row0.each do |character|
+      column_counter += 1
+      # binding.pry
+      if character == 'X'
+        if row1[column_counter + 1] == 'X'
+          if row2[column_counter + 2] == 'X'
+            if row3[column_counter + 3] == 'X'
+              return true
+            end
+          end
+        end
+      end
+    end
+  end
+
+
+  def user_win?
+
+  end
+
+  def computer_win?
+
+  end
+
 end
