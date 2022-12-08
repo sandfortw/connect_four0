@@ -178,7 +178,7 @@ class Board
     column_counter = -1
     row0.each do |character|
       column_counter += 1
-      binding.pry
+      # binding.pry
       if character == 'X'
         if row1[column_counter + 1] == 'X'
           if row2[column_counter + 2] == 'X'
@@ -189,8 +189,15 @@ class Board
         end
       end
     end
+  end
 
-  
+
+  def user_win?
+
+  end
+
+  def computer_win?
+
   end
 
 end
