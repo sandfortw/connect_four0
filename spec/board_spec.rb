@@ -127,6 +127,23 @@ RSpec.describe Board do
     board.user_place_piece("D")
     board.user_place_piece("D")
     expect(board.diagonal_user_win?(5)).to be(true)
-
   end
+
+  it "will check if user won any diagonal" do
+    board = Board.new
+    expect(board.diagonal_user_win_any?).to be(false)
+    board.user_place_piece("A")
+    board.user_place_piece("B")
+    board.user_place_piece("B")
+    board.user_place_piece("C")
+    board.user_place_piece("C")
+    board.user_place_piece("C")
+    board.user_place_piece("D")
+    board.user_place_piece("D")
+    board.user_place_piece("D")
+    board.user_place_piece("D")
+    expect(board.diagonal_user_win_any?).to be(true)
+    
+  end
+
 end

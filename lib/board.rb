@@ -281,13 +281,20 @@ class Board
     return false
   end
 
+  def diagonal_user_win_any?
+   diagonal_user_win?(0)|| diagonal_user_win?(1) || diagonal_user_win?(2) || diagonal_user_win?(3) || diagonal_user_win?(4) || diagonal_user_win?(5)
+  end
+
+  def diagonal_computer_win_any?
+    diagonal_computer_win?(0) || diagonal_computer_win?(1) || diagonal_computer_win(2) || diagonal_computer_win?(3) || diagonal_computer_win(4) || diagonal_computer_win?(5)
+  end
 
   def user_win?
-    diagonal_user_win? || horizontal_user_win? || vertical_user_win?
+   diagonal_user_win_any? || horizontal_user_win? || vertical_user_win? 
   end
 
   def computer_win?
-    diagonal_computer_win? || horizontal_computer_win? || vertical_computer_win?
+    diagonal_computer_win_any? || horizontal_computer_win? || vertical_computer_win?
   end
 
 end
