@@ -3,6 +3,7 @@ class Game
   def initialize
     @game_board = Board.new
     @turn_counter = 0
+    @valid_inputs = ["A", "B", "C", "D", "E", "F", "G"]
   end 
 
   def opening_message
@@ -20,8 +21,14 @@ class Game
 
   def turn
     @turn_counter += 1
+    # valid_input = ['a'.upcase,'b'.upcase,'c'.upcase,'d'.upcase,'e'.upcase,'f'.upcase,'a'.upcase]
     puts "#{@username}, Please enter the a column A-G where you want to place a piece"
     user_selection = gets.chomp
+
+    until @valid_inputs.include?(user_selection.upcase) == true
+      puts "That is an invalid input try again"
+      user_selection = gets.chomp
+    end
     @game_board.user_place_piece(user_selection)
     @game_board.render
     @user_win = @game_board.user_win?
