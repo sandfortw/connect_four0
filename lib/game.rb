@@ -1,5 +1,5 @@
 class Game
-
+  attr_reader :turn_counter
   def initialize
     @game_board = Board.new
     @turn_counter = 0
