@@ -36,7 +36,8 @@ class Game
        puts "#{@username} has won the Game!"
      else
        puts "Computer has placed a piece"
-        @game_board.computer_place_piece
+        random_number = [0, 1 , 2 ,3 ,4 ,5, 6].shuffle.first
+        @game_board.computer_place_piece(random_number)
         @game_board.render
         @game_board.computer_win?
         if @game_board.computer_win? == true
