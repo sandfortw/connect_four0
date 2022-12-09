@@ -1,12 +1,11 @@
 require './lib/piece'
 require './lib/cell'
 require './lib/board'
+require './lib/game'
 
-
-
-puts "Welcome to connect four"
-puts "Select A - G to place a piece"
-board = Board.new
-board.render
+game = Game.new
+game.opening_message
+game.create_user_player
+game.run_game
 
 

@@ -286,7 +286,7 @@ class Board
   end
 
   def diagonal_computer_win_any?
-    diagonal_computer_win?(0) || diagonal_computer_win?(1) || diagonal_computer_win(2) || diagonal_computer_win?(3) || diagonal_computer_win(4) || diagonal_computer_win?(5)
+    diagonal_computer_win?(0) || diagonal_computer_win?(1) || diagonal_computer_win?(2) || diagonal_computer_win?(3) || diagonal_computer_win?(4) || diagonal_computer_win?(5)
   end
 
   def user_win?
