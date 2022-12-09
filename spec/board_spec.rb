@@ -42,11 +42,15 @@ RSpec.describe Board do
   it "computer can place piece" do 
 
     board = Board.new
-    board.computer_place_piece
+    board.computer_place_piece(1)
 
-   board.render
+    board.render
 
-    board.computer_place_piece
+    board.computer_place_piece(2)
+    board.render
+
+    random_number = [0, 1 , 2 ,3 ,4 ,5, 6].shuffle.first
+    board.computer_place_piece(random_number)
     board.render
 
   end 

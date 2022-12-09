@@ -89,9 +89,8 @@ class Board
     end
   end
 
-  def computer_place_piece
-    possible_placements = [0, 1 , 2 ,3 ,4 ,5, 6]
-    @matrix.column(possible_placements.shuffle.first).to_a.reverse.find do |cell|
+  def computer_place_piece(number)
+    @matrix.column(number).to_a.reverse.find do |cell|
       if cell.empty?
         return cell.place_piece(Piece.new(:computer))
         break

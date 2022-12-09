@@ -1,5 +1,7 @@
 class Cell
-  attr_reader :row, :column, :piece
+  attr_reader :row, 
+              :column, 
+              :piece
 
   def initialize(column, row)
     @row = row
