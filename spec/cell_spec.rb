@@ -70,7 +70,7 @@ RSpec.describe Cell do
     expect(board[:cell0].render).to eq('X')
     expect(board[:cell1].render).to eq('O')
     expect(board[:cell2].render).to eq('.')
-    expect(board[:cell1].row).to eq(1)
-    expect(board[:cell1].column).to eq(2)
+    expect(board[:cell1].row).to eq(2)
+    expect(board[:cell1].column).to eq(1)
   end
 end
