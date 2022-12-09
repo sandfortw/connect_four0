@@ -16,5 +16,6 @@ RSpec.describe Game do
 
       expect(game.opening_message).to eq("Print successful.")
     end 
+
   end 
 end 

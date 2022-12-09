@@ -60,8 +60,6 @@ RSpec.describe Cell do
       cell2: Cell.new(2, 2)
     }
    
-
-
     piece = Piece.new(:user)
     piece2 = Piece.new(:computer)
     board[:cell0].place_piece(piece)
