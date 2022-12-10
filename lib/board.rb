@@ -3,7 +3,7 @@ require 'pry'
 
 
 class Board
-  attr_reader :board, :matrix
+  attr_reader :board
 
   def initialize
    @board = {
@@ -70,22 +70,14 @@ class Board
   puts @matrix.row(5).to_a.map {|cell| cell.render}.join
   return "Print successful."
  end
-  
- def column(num)
-  @matrix.column(num).to_a
- end
 
- def row(num)
-  @matrix.row(num).to_a
- end
-
- def user_place_piece(letter)
-  column_num_to_letter = { "A" => 0, "B" => 1, "C" => 2, "D" => 3, "E" => 4, "F" => 5, "G" => 6}
-  @matrix.column(column_num_to_letter[letter.upcase]).to_a.reverse.find do |cell|
-    if cell.empty?
-     return cell.place_piece(Piece.new(:user))
-      break
-     end
+  def user_place_piece(letter)
+    column_num_to_letter = { "A" => 0, "B" => 1, "C" => 2, "D" => 3, "E" => 4, "F" => 5, "G" => 6}
+    @matrix.column(column_num_to_letter[letter.upcase]).to_a.reverse.find do |cell|
+      if cell.empty?
+        return cell.place_piece(Piece.new(:user))
+        break
+      end
     end
   end
 
@@ -164,9 +156,7 @@ class Board
     end 
   end
 
-  def diagonal_user_win?(row_num)
-    # row0[0],row1[1], row2[2],row3[3] #==> win downwards
-    # row5[0], row4[1], row3[2], row2[1] #==> win upwards
+  def diagonal_win?(row_num, x_or_o)
     
     row_hash = {
     "row0" => @matrix.row(0).to_a.map {|cell| cell.render},
@@ -177,115 +167,47 @@ class Board
     "row5" => @matrix.row(5).to_a.map {|cell| cell.render}
     }
 
+    #Check diagonal down and right
     column_counter = -1
     row_hash["row#{row_num}"].each do |character|
       column_counter += 1
-      if character == 'X'
-        if row_hash["row#{row_num + 1}"] != nil
-          if row_hash["row#{row_num + 1}"][column_counter + 1] == 'X'
-            if row_hash["row#{row_num + 2}"] != nil
-              if row_hash["row#{row_num + 2}"][column_counter + 2] == 'X'
-                if row_hash["row#{row_num + 3}"] != nil
-                  if row_hash["row#{row_num + 3}"][column_counter + 3] == 'X'
-                    return true
-                    break
-                  end
-                end
-              end
+      if character == x_or_o
+        if row_hash["row#{row_num + 1}"] && row_hash["row#{row_num + 1}"][column_counter + 1] == x_or_o
+          if row_hash["row#{row_num + 2}"] && row_hash["row#{row_num + 2}"][column_counter + 2] == x_or_o
+            if row_hash["row#{row_num + 3}"] && row_hash["row#{row_num + 3}"][column_counter + 3] == x_or_o
+              return true
+                break
             end
           end
         end
       end
     end
 
+    #Check diagonal up and right
     column_counter = -1
     row_hash["row#{row_num}"].each do |character|
       column_counter += 1
-      if character == 'X'
-        if row_hash["row#{row_num - 1}"] != nil
-          if row_hash["row#{row_num - 1}"][column_counter + 1] == 'X'
-            if row_hash["row#{row_num - 2}"] != nil
-              if row_hash["row#{row_num - 2}"][column_counter + 2] == 'X'
-                if row_hash["row#{row_num - 3}"] != nil
-                  if row_hash["row#{row_num - 3}"][column_counter + 3] == 'X'
-                    return true
-                    break
-                  end
-                end
-              end
+      if character == x_or_o
+        if row_hash["row#{row_num - 1}"] && row_hash["row#{row_num - 1}"][column_counter + 1] == x_or_o
+          if row_hash["row#{row_num - 2}"] && row_hash["row#{row_num - 2}"][column_counter + 2] == x_or_o
+            if row_hash["row#{row_num - 3}"] && row_hash["row#{row_num - 3}"][column_counter + 3] == x_or_o
+              return true
+              break
             end
           end
         end
       end
     end
-
-    return false
-  end
-
-  def diagonal_computer_win?(row_num)
-    # row0[0],row1[1], row2[2],row3[3] #==> win downwards
-    # row5[0], row4[1], row3[2], row2[1] #==> win upwards
-    
-    row_hash = {
-    "row0" => @matrix.row(0).to_a.map {|cell| cell.render},
-    "row1" => @matrix.row(1).to_a.map {|cell| cell.render},
-    "row2" => @matrix.row(2).to_a.map {|cell| cell.render},
-    "row3" => @matrix.row(3).to_a.map {|cell| cell.render},
-    "row4" => @matrix.row(4).to_a.map {|cell| cell.render},
-    "row5" => @matrix.row(5).to_a.map {|cell| cell.render}
-    }
-
-    column_counter = -1
-    row_hash["row#{row_num}"].each do |character|
-      column_counter += 1
-      if character == 'X'
-        if row_hash["row#{row_num + 1}"] != nil
-          if row_hash["row#{row_num + 1}"][column_counter + 1] == 'O'
-            if row_hash["row#{row_num + 2}"] != nil
-              if row_hash["row#{row_num + 2}"][column_counter + 2] == 'O'
-                if row_hash["row#{row_num + 3}"] != nil
-                  if row_hash["row#{row_num + 3}"][column_counter + 3] == 'O'
-                    return true
-                    break
-                  end
-                end
-              end
-            end
-          end
-        end
-      end
-    end
-
-    column_counter = -1
-    row_hash["row#{row_num}"].each do |character|
-      column_counter += 1
-      if character == 'X'
-        if row_hash["row#{row_num - 1}"] != nil
-          if row_hash["row#{row_num - 1}"][column_counter + 1] == 'O'
-            if row_hash["row#{row_num - 2}"] != nil
-              if row_hash["row#{row_num - 2}"][column_counter + 2] == 'O'
-                if row_hash["row#{row_num - 3}"] != nil
-                  if row_hash["row#{row_num - 3}"][column_counter + 3] == 'O'
-                    return true
-                    break
-                  end
-                end
-              end
-            end
-          end
-        end
-      end
-    end
-
+  
     return false
   end
 
   def diagonal_user_win_any?
-   diagonal_user_win?(0)|| diagonal_user_win?(1) || diagonal_user_win?(2) || diagonal_user_win?(3) || diagonal_user_win?(4) || diagonal_user_win?(5)
+   diagonal_win?(0, 'X')|| diagonal_win?(1, 'X') || diagonal_win?(2, 'X') || diagonal_win?(3, 'X') || diagonal_win?(4, 'X') || diagonal_win?(5, 'X')
   end
 
   def diagonal_computer_win_any?
-    diagonal_computer_win?(0) || diagonal_computer_win?(1) || diagonal_computer_win?(2) || diagonal_computer_win?(3) || diagonal_computer_win?(4) || diagonal_computer_win?(5)
+    diagonal_win?(0, 'O') || diagonal_win?(1, 'O') || diagonal_win?(2, 'O') || diagonal_win?(3, 'O') || diagonal_win?(4, 'O') || diagonal_win?(5, 'O')
   end
 
   def user_win?

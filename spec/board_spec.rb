@@ -15,9 +15,7 @@ RSpec.describe Board do
   it "has readable attributes" do
     board = Board.new
 
-    expect(board.row(0)).to be_an(Array)
     expect(board.board).to be_a(Hash)
-    expect(board.matrix).to be_a(Matrix)
 
   end
 
@@ -85,7 +83,7 @@ RSpec.describe Board do
   it 'will check for a downward diagonal win for user' do
     board = Board.new
 
-    expect(board.diagonal_user_win?(0)).to be(false)
+    expect(board.diagonal_win?(0, 'X')).to be(false)
     board.user_place_piece("A")
     board.user_place_piece("A")
     board.user_place_piece("A")
@@ -104,7 +102,7 @@ RSpec.describe Board do
     board.user_place_piece("D")
     board.user_place_piece("D")
     board.user_place_piece("D")
-    expect(board.diagonal_user_win?(0)).to be(true)
+    expect(board.diagonal_win?(0, 'X')).to be(true)
   end
 
   it 'will check for an upwards diagonal win for user' do
@@ -119,7 +117,7 @@ RSpec.describe Board do
     board.user_place_piece("D")
     board.user_place_piece("D")
     board.user_place_piece("D")
-    expect(board.diagonal_user_win?(5)).to be(true)
+    expect(board.diagonal_win?(5, 'X')).to be(true)
   end
 
   it "will check if user won any diagonal" do
