@@ -60,17 +60,19 @@ class Board
     ])
   end
  
- def render
-  puts "ABCDEFG"
-  puts @matrix.row(0).to_a.map {|cell| cell.render}.join 
-  puts @matrix.row(1).to_a.map {|cell| cell.render}.join
-  puts @matrix.row(2).to_a.map {|cell| cell.render}.join
-  puts @matrix.row(3).to_a.map {|cell| cell.render}.join
-  puts @matrix.row(4).to_a.map {|cell| cell.render}.join
-  puts @matrix.row(5).to_a.map {|cell| cell.render}.join
-  return "Print successful."
- end
-
+  def render
+    puts ""
+    puts "================================================================"
+    puts "ABCDEFG"
+    puts @matrix.row(0).to_a.map {|cell| cell.render}.join 
+    puts @matrix.row(1).to_a.map {|cell| cell.render}.join
+    puts @matrix.row(2).to_a.map {|cell| cell.render}.join
+    puts @matrix.row(3).to_a.map {|cell| cell.render}.join
+    puts @matrix.row(4).to_a.map {|cell| cell.render}.join
+    puts @matrix.row(5).to_a.map {|cell| cell.render}.join
+    return "Print successful."
+   end
+   
   def user_place_piece(letter)
     column_num_to_letter = { "A" => 0, "B" => 1, "C" => 2, "D" => 3, "E" => 4, "F" => 5, "G" => 6}
     @matrix.column(column_num_to_letter[letter.upcase]).to_a.reverse.find do |cell|
