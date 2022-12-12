@@ -4,6 +4,8 @@ class Game
     @game_board = Board.new
     @turn_counter = 0
     @valid_inputs = ["A", "B", "C", "D", "E", "F", "G"]
+    @username2 "The computer"
+    @player_2 = false
   end 
 
   def opening_message
