@@ -4,24 +4,45 @@ class Game
     @game_board = Board.new
     @turn_counter = 0
     @valid_inputs = ["A", "B", "C", "D", "E", "F", "G"]
+    @username2 = "The computer"
+    @player_2 = false
   end 
 
   def opening_message
     puts "Welcome to Connect Four"
-    puts "Player pieces are shown with 'X' and computer pieces are shown with 'O'"
+    puts "Player 1's pieces are shown with an 'X' and player 2's pieces are shown with an 'O'."
     @game_board.render
   end 
 
   def create_user_player
-    puts "Please enter your username for today's game:"
+    puts "Player 1, please enter your username for today's game:"
     @username = gets.chomp
-    # add more text if we would like ....
-    puts "Let's Begin!"
   end 
+
+
+  def get_player_2_name
+    puts "Would you like a second human player? y/n"
+    @answer = gets.chomp
+    until @answer.upcase == "Y" || @answer.upcase == "YES" ||@answer.upcase == "N" ||@answer.upcase == "NO"
+      puts "That is an invalid input; try again."
+        @answer = gets.chomp
+    end
+
+    if @answer.upcase == "Y" || @answer.upcase == "YES"
+      @player_2 = true
+      puts "Player 2, please enter your username for today's game:"
+      @username2 = gets.chomp
+    elsif @answer.upcase == "N" || @answer.upcase == "NO"
+      @player_2 = false
+      puts "Player 2 will be a computer."
+    else
+      puts 'ERROR'
+      @player_2 = nil
+    end
+  end
 
   def turn
     @turn_counter += 1
-    # valid_input = ['a'.upcase,'b'.upcase,'c'.upcase,'d'.upcase,'e'.upcase,'f'.upcase,'a'.upcase]
     puts "#{@username}, please enter a column A-G where you want to place a piece."
     user_selection = gets.chomp
 
@@ -31,18 +52,40 @@ class Game
     end
     @game_board.user_place_piece(user_selection)
     @game_board.render
+    puts "#{@username} placed on column #{user_selection.upcase}."
     @user_win = @game_board.user_win?
      if @game_board.user_win? == true
        puts "#{@username} has won the Game!"
      else
         letters = ["A", "B", "C", "D", "E", "F", "G"]
-        random_number = [0, 1, 2, 3, 4, 5, 6].shuffle.first
-        @game_board.computer_place_piece(random_number)
+        if @player_2 == false
+          @number = [0, 1, 2, 3, 4, 5, 6].shuffle.first
+        else
+          letters_hash = {
+            'A' => 0,
+            'B' => 1,
+            'C' => 2,
+            'D' => 3,
+            'E' => 4,
+            'F' => 5,
+            'G' => 6
+          }
+          puts "#{@username2}, select a column A-G where you want to place a piece."
+          @user2_selection = gets.chomp.upcase
+          until @valid_inputs.include?(@user2_selection.upcase) == true
+            puts "That is an invalid input; try again."
+            @user2_selection = gets.chomp.upcase
+          end
+          @number = letters_hash[@user2_selection]
+        end
+
+
+        @game_board.computer_place_piece(@number)
         @game_board.render
-        puts "The computer placed on column #{letters[random_number]}."
+        puts "#{@username2} placed on column #{letters[@number]}."
         @game_board.computer_win?
         if @game_board.computer_win? == true
-          puts "The computer has won the game. :("
+          puts "#{@username2} has won the game!"
         end 
       end 
    end 
