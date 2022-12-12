@@ -93,116 +93,89 @@ class Board
   end 
 
   def horizontal_user_win?
-    check_wins = [
-    [@matrix.row(0).to_a.map {|cell| cell.render}.join.scan(/XXXX/)],
-    [@matrix.row(1).to_a.map {|cell| cell.render}.join.scan(/XXXX/)],
-    [@matrix.row(2).to_a.map {|cell| cell.render}.join.scan(/XXXX/)],
-    [@matrix.row(3).to_a.map {|cell| cell.render}.join.scan(/XXXX/)],
-    [@matrix.row(4).to_a.map {|cell| cell.render}.join.scan(/XXXX/)],
-    [@matrix.row(5).to_a.map {|cell| cell.render}.join.scan(/XXXX/)],
-    [@matrix.row(6).to_a.map {|cell| cell.render}.join.scan(/XXXX/)]]
-    
-    if check_wins != ([[[]], [[]], [[]], [[]], [[]], [[]], [[]]])
-      true
-    else 
-      false
+    if 
+      @matrix.row(0).to_a.map {|cell| cell.render}.join.scan(/XXXX/) == ["XXXX"] ||
+      @matrix.row(1).to_a.map {|cell| cell.render}.join.scan(/XXXX/) == ["XXXX"] ||
+      @matrix.row(2).to_a.map {|cell| cell.render}.join.scan(/XXXX/) == ["XXXX"] ||
+      @matrix.row(3).to_a.map {|cell| cell.render}.join.scan(/XXXX/) == ["XXXX"] ||
+      @matrix.row(4).to_a.map {|cell| cell.render}.join.scan(/XXXX/) == ["XXXX"] ||
+      @matrix.row(5).to_a.map {|cell| cell.render}.join.scan(/XXXX/) == ["XXXX"] 
+      return true
     end 
+    false
   end
 
   def vertical_user_win?
-    check_wins = [
-    [@matrix.column(0).to_a.map {|cell| cell.render}.join.scan(/XXXX/)],
-    [@matrix.column(1).to_a.map {|cell| cell.render}.join.scan(/XXXX/)],
-    [@matrix.column(2).to_a.map {|cell| cell.render}.join.scan(/XXXX/)],
-    [@matrix.column(3).to_a.map {|cell| cell.render}.join.scan(/XXXX/)],
-    [@matrix.column(4).to_a.map {|cell| cell.render}.join.scan(/XXXX/)],
-    [@matrix.column(5).to_a.map {|cell| cell.render}.join.scan(/XXXX/)]]
-    
-    if check_wins != ([[[]], [[]], [[]], [[]], [[]], [[]]])
-      true
-    else 
-      false
+    if 
+      @matrix.column(0).to_a.map {|cell| cell.render}.join.scan(/XXXX/) == ["XXXX"] ||
+      @matrix.column(1).to_a.map {|cell| cell.render}.join.scan(/XXXX/) == ["XXXX"] ||
+      @matrix.column(2).to_a.map {|cell| cell.render}.join.scan(/XXXX/) == ["XXXX"] ||
+      @matrix.column(3).to_a.map {|cell| cell.render}.join.scan(/XXXX/) == ["XXXX"] ||
+      @matrix.column(4).to_a.map {|cell| cell.render}.join.scan(/XXXX/) == ["XXXX"] ||
+      @matrix.column(5).to_a.map {|cell| cell.render}.join.scan(/XXXX/) == ["XXXX"] 
+      return true
     end 
+    false
   end
 
   def horizontal_computer_win?
-    check_wins = [
-    [@matrix.row(0).to_a.map {|cell| cell.render}.join.scan(/OOOO/)],
-    [@matrix.row(1).to_a.map {|cell| cell.render}.join.scan(/OOOO/)],
-    [@matrix.row(2).to_a.map {|cell| cell.render}.join.scan(/OOOO/)],
-    [@matrix.row(3).to_a.map {|cell| cell.render}.join.scan(/OOOO/)],
-    [@matrix.row(4).to_a.map {|cell| cell.render}.join.scan(/OOOO/)],
-    [@matrix.row(5).to_a.map {|cell| cell.render}.join.scan(/OOOO/)],
-    [@matrix.row(6).to_a.map {|cell| cell.render}.join.scan(/OOOO/)]]
-    
-    if check_wins != ([[[]], [[]], [[]], [[]], [[]], [[]], [[]]])
-      true
-    else 
-      false
+    if 
+      @matrix.row(0).to_a.map {|cell| cell.render}.join.scan(/OOOO/) == ["OOOO"] ||
+      @matrix.row(1).to_a.map {|cell| cell.render}.join.scan(/OOOO/) == ["OOOO"] ||
+      @matrix.row(2).to_a.map {|cell| cell.render}.join.scan(/OOOO/) == ["OOOO"] ||
+      @matrix.row(3).to_a.map {|cell| cell.render}.join.scan(/OOOO/) == ["OOOO"] ||
+      @matrix.row(4).to_a.map {|cell| cell.render}.join.scan(/OOOO/) == ["OOOO"] ||
+      @matrix.row(5).to_a.map {|cell| cell.render}.join.scan(/OOOO/) == ["OOOO"] 
+      return true
     end 
+    false
   end
 
   def vertical_computer_win?
-    check_wins = [
-    [@matrix.column(0).to_a.map {|cell| cell.render}.join.scan(/OOOO/)],
-    [@matrix.column(1).to_a.map {|cell| cell.render}.join.scan(/OOOO/)],
-    [@matrix.column(2).to_a.map {|cell| cell.render}.join.scan(/OOOO/)],
-    [@matrix.column(3).to_a.map {|cell| cell.render}.join.scan(/OOOO/)],
-    [@matrix.column(4).to_a.map {|cell| cell.render}.join.scan(/OOOO/)],
-    [@matrix.column(5).to_a.map {|cell| cell.render}.join.scan(/OOOO/)]]
-    
-    if check_wins != ([[[]], [[]], [[]], [[]], [[]], [[]]])
-      true
-    else 
-      false
+    if 
+      @matrix.column(0).to_a.map {|cell| cell.render}.join.scan(/OOOO/) == ["OOOO"] ||
+      @matrix.column(1).to_a.map {|cell| cell.render}.join.scan(/OOOO/) == ["OOOO"] ||
+      @matrix.column(2).to_a.map {|cell| cell.render}.join.scan(/OOOO/) == ["OOOO"] ||
+      @matrix.column(3).to_a.map {|cell| cell.render}.join.scan(/OOOO/) == ["OOOO"] ||
+      @matrix.column(4).to_a.map {|cell| cell.render}.join.scan(/OOOO/) == ["OOOO"] ||
+      @matrix.column(5).to_a.map {|cell| cell.render}.join.scan(/OOOO/) == ["OOOO"] 
+      return true
     end 
-  end
+      false
+    end
 
-  def diagonal_win?(row_num, x_or_o)
+    def diagonal_win?(row_num, x_or_o)
     
-    row_hash = {
-    "row0" => @matrix.row(0).to_a.map {|cell| cell.render},
-    "row1" => @matrix.row(1).to_a.map {|cell| cell.render},
-    "row2" => @matrix.row(2).to_a.map {|cell| cell.render},
-    "row3" => @matrix.row(3).to_a.map {|cell| cell.render},
-    "row4" => @matrix.row(4).to_a.map {|cell| cell.render},
-    "row5" => @matrix.row(5).to_a.map {|cell| cell.render}
-    }
-
-    #Check diagonal down and right
-    column_counter = -1
-    row_hash["row#{row_num}"].each do |character|
-      column_counter += 1
-      if character == x_or_o
-        if row_hash["row#{row_num + 1}"] && row_hash["row#{row_num + 1}"][column_counter + 1] == x_or_o
-          if row_hash["row#{row_num + 2}"] && row_hash["row#{row_num + 2}"][column_counter + 2] == x_or_o
-            if row_hash["row#{row_num + 3}"] && row_hash["row#{row_num + 3}"][column_counter + 3] == x_or_o
-              return true
-                break
-            end
-          end
-        end
-      end
-    end
-
-    #Check diagonal up and right
-    column_counter = -1
-    row_hash["row#{row_num}"].each do |character|
-      column_counter += 1
-      if character == x_or_o
-        if row_hash["row#{row_num - 1}"] && row_hash["row#{row_num - 1}"][column_counter + 1] == x_or_o
-          if row_hash["row#{row_num - 2}"] && row_hash["row#{row_num - 2}"][column_counter + 2] == x_or_o
-            if row_hash["row#{row_num - 3}"] && row_hash["row#{row_num - 3}"][column_counter + 3] == x_or_o
-              return true
-              break
-            end
-          end
-        end
-      end
-    end
+      row_hash = {
+      "row0" => @matrix.row(0).to_a.map {|cell| cell.render},
+      "row1" => @matrix.row(1).to_a.map {|cell| cell.render},
+      "row2" => @matrix.row(2).to_a.map {|cell| cell.render},
+      "row3" => @matrix.row(3).to_a.map {|cell| cell.render},
+      "row4" => @matrix.row(4).to_a.map {|cell| cell.render},
+      "row5" => @matrix.row(5).to_a.map {|cell| cell.render}
+      }
   
-    return false
-  end
+      column_counter = -1
+      row_hash["row#{row_num}"].each do |character|
+        column_counter += 1
+  
+      #Check diagonal down and right
+        if (character == x_or_o) &&
+          (row_hash["row#{row_num + 1}"] && row_hash["row#{row_num + 1}"][column_counter + 1] == x_or_o) &&
+          (row_hash["row#{row_num + 2}"] && row_hash["row#{row_num + 2}"][column_counter + 2] == x_or_o) &&
+          (row_hash["row#{row_num + 3}"] && row_hash["row#{row_num + 3}"][column_counter + 3] == x_or_o)
+          return true
+  
+      #Check diagonal up and right
+        elsif (character == x_or_o) &&
+          (row_hash["row#{row_num - 1}"] && row_hash["row#{row_num - 1}"][column_counter + 1] == x_or_o) &&
+          (row_hash["row#{row_num - 2}"] && row_hash["row#{row_num - 2}"][column_counter + 2] == x_or_o) &&
+          (row_hash["row#{row_num - 3}"] && row_hash["row#{row_num - 3}"][column_counter + 3] == x_or_o)
+          return true
+        end
+      end
+     false
+    end
 
   def diagonal_user_win_any?
    diagonal_win?(0, 'X')|| diagonal_win?(1, 'X') || diagonal_win?(2, 'X') || diagonal_win?(3, 'X') || diagonal_win?(4, 'X') || diagonal_win?(5, 'X')
