@@ -10,17 +10,38 @@ class Game
 
   def opening_message
     puts "Welcome to Connect Four"
-    puts "Player pieces are shown with 'X' and computer pieces are shown with 'O'"
+    puts "Player 1's pieces are shown with an 'X' and player 2's pieces are shown with an 'O'."
     @game_board.render
-  end 
+  end
 
   def create_user_player
-    puts "Please enter your username for today's game:"
+    puts "Player 1, please enter your username for today's game:"
     @username = gets.chomp
     # add more text if we would like ....
     puts "Let's Begin!"
   end 
 
+  def get_player_2_name
+    puts "Would you like a second human player? y/n"
+    @answer = gets.chomp
+    until @answer.upcase == "Y" || @answer.upcase == "YES" ||@answer.upcase == "N" ||@answer.upcase == "NO"
+      puts "That is an invalid input; try again."
+        @answer = gets.chomp
+    end
+
+    if @answer.upcase == "Y" || @answer.upcase == "YES"
+      @player_2 = true
+      puts "Player 2, please enter your username for today's game:"
+      @username2 = gets.chomp
+    elsif @answer.upcase == "N" || @answer.upcase == "NO"
+      @player_2 = false
+      puts "Player 2 will be a computer."
+    else
+      puts 'ERROR'
+      @player_2 = nil
+    end
+  end
+  
   def turn
     @turn_counter += 1
     # valid_input = ['a'.upcase,'b'.upcase,'c'.upcase,'d'.upcase,'e'.upcase,'f'.upcase,'a'.upcase]
