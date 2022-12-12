@@ -91,6 +91,9 @@ class Game
    end 
 
   def run_game
+    opening_message
+    create_user_player
+    get_player_2_name
     until @turn_counter == 21 || @game_board.computer_win? == true || @user_win == true
       turn
     end 
