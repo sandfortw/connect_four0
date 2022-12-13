@@ -1,27 +1,27 @@
 class Cell
-  attr_reader :row,
-              :column,
+  attr_reader :row, 
+              :column, 
               :piece
 
   def initialize(column, row)
     @row = row
     @column = column
     @piece = nil
-  end
+  end 
 
   def empty?
-    @piece.nil?
-  end
+    @piece == nil
+  end 
 
   def place_piece(piece)
     @piece = piece
-  end
+  end 
 
   def render
-    if @piece.nil?
+    if @piece == nil 
       '.'
-    else
+    else 
       @piece.symbol
-    end
-  end
-end
+    end 
+  end 
+end 
