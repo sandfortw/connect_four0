@@ -15,7 +15,7 @@ RSpec.describe Board do
   it "has readable attributes" do
     board = Board.new
 
-    expect(board.board).to be_a(Hash)
+    expect(board.matrix).to be_a(Matrix)
 
   end
 
@@ -49,7 +49,7 @@ RSpec.describe Board do
 
     random_number = [0, 1 , 2 ,3 ,4 ,5, 6].shuffle.first
     board.computer_place_piece(random_number)
-    board.render
+    expect(board.render).to eq("Print successful.")
 
   end 
 
@@ -66,6 +66,18 @@ RSpec.describe Board do
     expect(board.horizontal_user_win?).to be(true)
   end 
 
+  it 'will check for a horizontal win for computer' do
+    board = Board.new
+    expect(board.horizontal_computer_win?).to be(false)
+
+    board.computer_place_piece(0)
+    board.computer_place_piece(1)
+    board.computer_place_piece(2)
+    board.computer_place_piece(3)
+
+    expect(board.horizontal_computer_win?).to be(true)
+  end
+  
   it 'will check for a vertical win for user' do 
 
     board = Board.new
@@ -78,6 +90,18 @@ RSpec.describe Board do
 
     expect(board.vertical_user_win?).to be(true)
 
+  end
+
+  it 'will check for a vertical win for computer' do
+    board = Board.new
+    expect(board.vertical_computer_win?).to be(false)
+
+    board.computer_place_piece(0)
+    board.computer_place_piece(0)
+    board.computer_place_piece(0)
+    board.computer_place_piece(0)
+
+    expect(board.vertical_computer_win?).to be(true)
   end
 
   it 'will check for a downward diagonal win for user' do
@@ -102,6 +126,7 @@ RSpec.describe Board do
     board.user_place_piece("D")
     board.user_place_piece("D")
     board.user_place_piece("D")
+
     expect(board.diagonal_win?(0, 'X')).to be(true)
   end
 
@@ -117,12 +142,14 @@ RSpec.describe Board do
     board.user_place_piece("D")
     board.user_place_piece("D")
     board.user_place_piece("D")
+
     expect(board.diagonal_win?(5, 'X')).to be(true)
   end
 
   it "will check if user won any diagonal" do
     board = Board.new
     expect(board.diagonal_user_win_any?).to be(false)
+
     board.user_place_piece("A")
     board.user_place_piece("B")
     board.user_place_piece("B")
@@ -133,8 +160,61 @@ RSpec.describe Board do
     board.user_place_piece("D")
     board.user_place_piece("D")
     board.user_place_piece("D")
+
     expect(board.diagonal_user_win_any?).to be(true)
-    
   end
 
+  it "will check if computer won any diagonal" do
+    board = Board.new
+    expect(board.diagonal_computer_win_any?).to be(false)
+
+    board.computer_place_piece(0)
+    board.computer_place_piece(1)
+    board.computer_place_piece(1)
+    board.computer_place_piece(2)
+    board.computer_place_piece(2)
+    board.computer_place_piece(2)
+    board.computer_place_piece(3)
+    board.computer_place_piece(3)
+    board.computer_place_piece(3)
+    board.computer_place_piece(3)
+
+    expect(board.diagonal_computer_win_any?).to be(true)
+  end
+
+  it "will check if user won" do
+    board = Board.new
+    expect(board.user_win?).to be(false)
+
+    board.user_place_piece("A")
+    board.computer_place_piece(1)
+    board.user_place_piece("A")
+    board.computer_place_piece(1)
+    board.user_place_piece("A")
+    board.computer_place_piece(2)
+    board.user_place_piece("A")
+
+    expect(board.user_win?).to be(true)
+  end
+
+  it "will check if computer won" do
+    board = Board.new
+    expect(board.computer_win?).to be(false)
+
+    board.user_place_piece("A")
+    board.computer_place_piece(1)
+    board.user_place_piece("A")
+    board.computer_place_piece(1)
+    board.user_place_piece("A")
+    board.computer_place_piece(1)
+    board.user_place_piece("G")
+    board.computer_place_piece(1)
+
+    expect(board.computer_win?).to be(true)
+  end
 end
+
+
+
+
+
