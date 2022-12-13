@@ -3,7 +3,6 @@ require './lib/board'
 require './lib/cell'
 require './lib/piece'
 require 'matrix'
-require 'pry'
 
 RSpec.describe Board do
   it 'exists' do
@@ -38,10 +37,10 @@ RSpec.describe Board do
     board = Board.new
     board.computer_place_piece(1)
 
-    board.render
+    # board.render
 
     board.computer_place_piece(2)
-    board.render
+    # board.render
 
     random_number = [0, 1, 2, 3, 4, 5, 6].sample
     board.computer_place_piece(random_number)
