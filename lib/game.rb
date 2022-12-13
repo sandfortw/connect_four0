@@ -6,6 +6,15 @@ class Game
     @valid_inputs = ["A", "B", "C", "D", "E", "F", "G"]
     @username2 = "The computer"
     @player_2 = false
+    @letters_hash = {
+      'A' => 0,
+      'B' => 1,
+      'C' => 2,
+      'D' => 3,
+      'E' => 4,
+      'F' => 5,
+      'G' => 6
+      }
   end 
 
   def opening_message
@@ -45,8 +54,9 @@ class Game
     @turn_counter += 1
     puts "#{@username}, please enter a column A-G where you want to place a piece."
     user_selection = gets.chomp
-
-    until @valid_inputs.include?(user_selection.upcase) == true
+# require 'pry'; binding.pry
+    until @valid_inputs.include?(user_selection.upcase) == true && 
+      @game_board.matrix.column(@letters_hash[user_selection.upcase]).to_a.map {|cell| cell.render}.include?(".")
       puts "That is an invalid input; try again."
       user_selection = gets.chomp
     end
@@ -61,22 +71,13 @@ class Game
         if @player_2 == false
           @number = [0, 1, 2, 3, 4, 5, 6].shuffle.first
         else
-          letters_hash = {
-            'A' => 0,
-            'B' => 1,
-            'C' => 2,
-            'D' => 3,
-            'E' => 4,
-            'F' => 5,
-            'G' => 6
-          }
           puts "#{@username2}, select a column A-G where you want to place a piece."
           @user2_selection = gets.chomp.upcase
           until @valid_inputs.include?(@user2_selection.upcase) == true
             puts "That is an invalid input; try again."
             @user2_selection = gets.chomp.upcase
           end
-          @number = letters_hash[@user2_selection]
+          @number = @letters_hash[@user2_selection]
         end
 
 
