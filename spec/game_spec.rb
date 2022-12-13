@@ -16,6 +16,12 @@ RSpec.describe Game do
 
       expect(game.opening_message).to eq("Print successful.")
     end 
+    
+    it 'have a readable turn counter' do
+      game = Game.new
 
+      expect(game.turn_counter).to eq(0)
+
+    end
   end 
 end 
