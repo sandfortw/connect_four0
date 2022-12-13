@@ -3,7 +3,7 @@ require 'pry'
 
 
 class Board
-  attr_reader :board
+  attr_reader :board, :matrix
 
   def initialize
    @board = {
@@ -77,8 +77,7 @@ class Board
     column_num_to_letter = { "A" => 0, "B" => 1, "C" => 2, "D" => 3, "E" => 4, "F" => 5, "G" => 6}
     @matrix.column(column_num_to_letter[letter.upcase]).to_a.reverse.find do |cell|
       if cell.empty?
-        return cell.place_piece(Piece.new(:user))
-        break
+         return cell.place_piece(Piece.new(:user))
       end
     end
   end
@@ -87,7 +86,6 @@ class Board
     @matrix.column(number).to_a.reverse.find do |cell|
       if cell.empty?
         return cell.place_piece(Piece.new(:computer))
-        break
       end
     end 
   end 
