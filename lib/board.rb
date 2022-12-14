@@ -105,7 +105,8 @@ class Board
        @matrix.column(2).to_a.map { |cell| cell.render }.join.scan(/XXXX/) == ['XXXX'] ||
        @matrix.column(3).to_a.map { |cell| cell.render }.join.scan(/XXXX/) == ['XXXX'] ||
        @matrix.column(4).to_a.map { |cell| cell.render }.join.scan(/XXXX/) == ['XXXX'] ||
-       @matrix.column(5).to_a.map { |cell| cell.render }.join.scan(/XXXX/) == ['XXXX']
+       @matrix.column(5).to_a.map { |cell| cell.render }.join.scan(/XXXX/) == ['XXXX'] ||
+       @matrix.column(6).to_a.map { |cell| cell.render }.join.scan(/XXXX/) == ['XXXX']
       return true
     end
 
@@ -131,7 +132,8 @@ class Board
        @matrix.column(2).to_a.map { |cell| cell.render }.join.scan(/OOOO/) == ['OOOO'] ||
        @matrix.column(3).to_a.map { |cell| cell.render }.join.scan(/OOOO/) == ['OOOO'] ||
        @matrix.column(4).to_a.map { |cell| cell.render }.join.scan(/OOOO/) == ['OOOO'] ||
-       @matrix.column(5).to_a.map { |cell| cell.render }.join.scan(/OOOO/) == ['OOOO']
+       @matrix.column(5).to_a.map { |cell| cell.render }.join.scan(/OOOO/) == ['OOOO'] ||
+       @matrix.column(6).to_a.map { |cell| cell.render }.join.scan(/OOOO/) == ['OOOO']
       return true
     end
 
