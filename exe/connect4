@@ -2,7 +2,5 @@
 
 require "connect4"
 
-puts "It's working!"
-
 runner = Connect4::Runner.new
 runner.run
