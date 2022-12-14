@@ -4,10 +4,9 @@ This gem will allow you to play connect four in your terminal.
 
 ## Installation
 
-To install the gem, clone this repo, then, while in a terminal with the repo, enter:
+To install this gem, enter the following into your terminal
 
-        $bundle exec rake install
-        
+$ gem install connect4
         
 To play, type connect4 into your terminal.
 
